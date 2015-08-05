@@ -1,0 +1,41 @@
+{% load render_bundle from webpack_loader %}
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'fact/index_style.css' %}" />
+
+<body onload="change();">
+	<div id='bouncer1'></div>
+	<div id='bouncer2'></div>
+	<div id='bouncer3'></div>
+	<div id='bouncer4'></div>
+
+	{% render_bundle 'main' %}
+
+</body>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<script> 
+
+var nIntervId;
+ 
+function change() {
+  nIntervId = setInterval(loop, 100);
+  setTimeout(function(){reloader()}, 20000);
+  
+}
+
+function loop() {
+    rand = 3000;
+
+    $('#bouncer1').delay(rand * (Math.random() * 5) + 1).fadeToggle().delay(rand * (Math.random() * 2) + 1).fadeToggle().delay(rand * (Math.random() * 5) + 1).slideUp().delay(rand * (Math.random() * 2) + 1).slideDown()
+    $('#bouncer2').delay(rand * (Math.random() * 5) + 1).fadeToggle().delay(rand * (Math.random() * 2) + 1).fadeToggle().delay(rand * (Math.random() * 5) + 1).slideUp().delay(rand * (Math.random() * 2) + 1).slideDown()
+    $('#bouncer3').delay(rand * (Math.random() * 5) + 1).slideUp().delay(rand * (Math.random() * 2) + 1).slideDown().delay(rand * (Math.random() * 5) + 1).fadeToggle().delay(rand * (Math.random() * 2) + 1).fadeToggle()
+    $('#bouncer4').delay(rand * (Math.random() * 5) + 1).fadeToggle().delay(rand * (Math.random() * 2) + 1).fadeToggle().delay(rand * (Math.random() * 5) + 1).slideUp().delay(rand * (Math.random() * 2) + 1).slideDown()
+}
+
+function reloader(){
+	location.reload(true)
+}
+
+</script> 
